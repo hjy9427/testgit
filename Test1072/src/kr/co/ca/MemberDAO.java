@@ -64,7 +64,7 @@ public class MemberDAO{
 		PreparedStatement pstmt = null;
 //		String sql = "select m.id, m.name, d.dname from member member m, depart d where m.did = d.did";
 //		String sql = "select id, name, dname from depart join member ";
-		String sql = "select id, name, age, d.dName from depart d natural join member";
+		String sql = "select id, name, age,  d.dName from depart d natural join member";
 		
 		ResultSet rs = null;
 		try {
@@ -152,7 +152,7 @@ public class MemberDAO{
 			pstmt.setString(1, dto.getName());
 			pstmt.setInt(2, dto.getAge());
 			pstmt.setString(3, dto.getDid());
-			pstmt.setString(4, dto.getId());
+
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
