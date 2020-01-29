@@ -8,7 +8,6 @@ public class MemberDTO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private String id;
 	private String name;
 	private int age;
@@ -23,34 +22,36 @@ public class MemberDTO implements Serializable{
 		this.name = name;
 		this.age = age;
 	}
-	
-	public String getid() {
-		return this.id;
-		
+
+	public String getId() {
+		return id;
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int getAge() {
 		return age;
 	}
-	
+
 	public void setAge(int age) {
 		this.age = age;
 	}
 
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,7 +77,13 @@ public class MemberDTO implements Serializable{
 		return true;
 	}
 
+
+	
+
 	@Override
 	public String toString() {
-		return id + ":" + name;
-	}}
+		return "MemberDTO [id=" + id + ", name=" + name + ", age=" + age + "]";
+	}
+	
+	
+}
