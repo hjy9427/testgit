@@ -1,0 +1,119 @@
+네비
+신상품
+탑
+아우터
+팬츠
+스커트
+가방
+공지사항
+이벤트
+문의하기
+
+물품 데이터베이스 tbl_pr
+pr_id
+pr_name
+pr_cate  카테고리(top, outer, pants, skirt, bags)
+pr_price
+pr_date  신상여부 알아보기 등록일시 한달이내
+pr_col   색상
+pr_size  small, medium, large, free  
+pr_thu   메인에 보여지는 이미지
+pr_img   filename                            
+
+장바구니 tbl_ca
+ca_id
+pr_id ref
+
+위시리스트 tbl_wish
+wish_id
+pro_id ref
+
+create table tbl_pr(
+pr_id number(3) primary key,
+pr_name varchar2(12) not null,
+pr_cate varchar2(12) not null,
+pr_price number(10) not null,
+pr_date date default sysdate,
+pr_col varchar2(12) not null,
+pr_size varchar2(12) not null,
+pr_thu varchar2(12) not null,
+pr_img varchar2(12) not null
+)
+
+create table tbl_nb(
+nb_no number(10) primary key,
+nb_title varchar2(100) not null,
+nb_writer varchar2(50) not null,
+nb_content varchar2(3000) not null,
+nb_regdate date default sysdate not null,
+nb_updatedate date default sysdate not null,
+nb_readcnt number(8) not null,
+nb_filename varchar2(50) not null,
+);
+create table tbl_qna(
+qna_no number(3) primary key,
+qna_title
+qna_writer
+qna_content
+qna_regdate
+qna_updatedate
+qna_readcnt
+qna_reproot
+qna_repstep
+qna_repindent
+
+qna_filename
+);
+
+
+
+create table board(
+bno number(5) primary key,
+secretno number(3) default 0 not null,
+qnatype varchar2(3) default 0 not null,
+title varchar2(30) not null,
+content varchar2(200) not null,
+writer varchar2(30) not null,
+regdate date default sysdate not null,
+updatedate date default sysdate,
+readcnt number(5) not null,
+filename varchar2(30)
+);
+create table user0(
+	id varchar2(3) primary key,
+	point number(3) default 0
+);
+
+insert into user0 values('m1', 0);
+insert into user0 values('m2', 0);
+
+commit;
+ create table user_tbl(
+  2  id varchar2(6) primary key,
+  3  pw varchar2(6) not null
+  4  );
+create table msg0(
+	mid number(3) primary key,
+	sender varchar2(3) references user0(id),
+	receiver varchar2(3) references user0(id)
+);
+alter table board add secretno number(3) default 0
+
+alter table board add qnatype varchar2(3) default 0
+1 홈페이지 문의
+2 상품문의
+3 배송문의
+4 기타
+
+
+
+
+
+
+
+
+
+
+
+
+ 
