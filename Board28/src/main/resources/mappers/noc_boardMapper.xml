@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.board">
+	
+	<insert id="insert">
+		insert into board (noc_no, noc_title, noc_content, noc_writer) 
+		values 
+		(
+			(select nvl2(max(noc_no), max(noc_no)+1, 1) from tbl_noc_board), 
+			#{noc_title}, #{noc_content}, #{noc_writer}
+		)
+		<selectKey order="AFTER" keyProperty="noc_no" resultType="Integer">
+			select max(noc_no) from board
+		</selectKey>
+	</insert>
+	
+	
+</mapper>
