@@ -11,6 +11,7 @@ public class MemberDTO implements Serializable{
 	private String id;
 	private int age;
 	private String name;
+	private String pw;
 	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
@@ -21,6 +22,16 @@ public class MemberDTO implements Serializable{
 		this.id = id;
 		this.age = age;
 		this.name = name;
+	}
+	
+	
+
+	public MemberDTO(String id, int age, String name, String pw) {
+		super();
+		this.id = id;
+		this.age = age;
+		this.name = name;
+		this.pw = pw;
 	}
 
 	public String getId() {
@@ -51,6 +62,16 @@ public class MemberDTO implements Serializable{
 		return serialVersionUID;
 	}
 
+	
+	
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,8 +99,10 @@ public class MemberDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", age=" + age + ", name=" + name + "]";
+		return "MemberDTO [id=" + id + ", age=" + age + ", name=" + name + ", pw=" + pw + "]";
 	}
+
+
 	
 	
 

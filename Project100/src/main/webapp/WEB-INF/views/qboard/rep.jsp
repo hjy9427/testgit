@@ -32,11 +32,12 @@
 
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">답글 달기</h1>
+		</div>
 	<div class="container">
 		<div class="row">
-		<div class="jumbotron">
-		<h1>글쓰기</h1>
-		</div>
+		
 	
 			<form method="post">
 			<input type="hidden" id="reproot" name="reproot" value="${vo.reproot}">

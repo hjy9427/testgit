@@ -13,13 +13,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	${test2 }<br>
-	<a href="/member/insert">회원등록</a><br>
-
-	<c:forEach items="${list}" var="dto">
-		<a href="/member/read?id=${dto.id}">${dto.id} | ${dto.name}</a> <br>
-	<!--read/${dto.id}
-	이렇게 써도 됨  -->
-	</c:forEach>
+	<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">회원목록</h1>
+	</div>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>이름</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+		
+						<td><a href="/member/read?id=${dto.id}">${dto.id}</a></td>
+						<td>${dto.name}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

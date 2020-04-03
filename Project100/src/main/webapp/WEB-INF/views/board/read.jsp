@@ -25,9 +25,12 @@
 
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">글읽기</h1>
+		</div>
 	<div class="container">
 		<div class="row">
-			<h1>글 자세히 보기</h1>
+
 			<div class="form-group">
 				<label for="title">제목</label>
 				<input class="form-control" id="title" readonly value="${vo.title}" name="title">
@@ -225,18 +228,10 @@
 			
 			
 			
-			/*목록누르면 게시판 목록으로 가기  */
+		
 			$(".btn-primary").click(function(){
 				location.assign("/board/listpage?curPage=${curPage}");
-				/* $("form").attr("method", "get");
-				$("form").attr("action", "/board/listpage");
-				$("form").submit(); */
-				/* location.assign("/board/list"); 
-				location.href = "/board/list"; 
-				이 세 개 같음
-				href는 안되는 경우도 있어서 어사인 쓰는게 나음
-				form 태그 이용한건 주소창에 http://localhost:8089/board/list?bno=10
-						이렇게 나옴*/
+		
 			});
 			$(".btn-success").click(function(){
 				$("form").attr("method", "get");
@@ -257,14 +252,12 @@
 		
 		function getList(bno){
 			$.getJSON("/replies/"+bno, function(data){
-					/*pathvariable annotation필요  */
-				/* console.log(data); */
+		
 				var str='';
 				for (var i = 0; i < data.length; i++) {
-					/*int 쓰면 안됨 var 써야함 자바스크립트에선  */
 					var obj=data[i];
 					str+='<div class="panel panel-info"><div class="panel-heading"><span>rno: '+obj.rno+', 작성자: '+obj.replyer+'</span><span class="pull-right">'+obj.updatedate+'</span></div><div data-rno="'+obj.rno+'" class="panel-body"><p>'+obj.replytext+'</p><button class="btn btn-link btn-update">수정</button><button class="btn btn-link btn-delete">삭제</button></div></div>'
-					/*속성을 큰따옴표로 묶어놨기 때문에 작은따옴표 사용 */
+			
 				}
 				
 				$("#replies").html(str);

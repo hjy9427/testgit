@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">로그인</h1>
+		</div>
 	<div class="container">
 		<div class="row">
 			<form action="/user/loginPost" method="post">
@@ -28,6 +31,9 @@
 					<input value="로그인" type="submit" class="form-control btn btn-info">
 				</div>
 			</form>
+		</div>
+		<div>
+			<a href="/member/searchid">아이디 찾기</a> | <a href="/member/searchpw">비밀번호 찾기</a>
 		</div>
 	</div>
 

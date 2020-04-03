@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">QNA 게시판</h1>
+		</div>
 	<div class="container">
 	<!--컨테이너는 좌측과 우측에 빈 공간을 줌 꽉 채우고싶으면 컨테인드어쩌고???  -->
 		<form>
@@ -22,12 +25,9 @@
 			</form>
 		
 		<div class="row">
-		
-		<!--디브 기능 하나  -->
+
 			<table class="table">
-			<!--부트스트랩은 클래스기반이라 클래스이름을 적어줘야 됨  -->
 				<thead>
-				<!--컬럼명적기  -->
 					<tr>
 						<th>bno</th>
 						<th>문의유형</th>
@@ -39,7 +39,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${to.list}" var="vo">
+					<c:forEach items="${to.qlist}" var="vo">
 						<tr>
 							<td>${vo.bno}</td>
 							<c:choose>

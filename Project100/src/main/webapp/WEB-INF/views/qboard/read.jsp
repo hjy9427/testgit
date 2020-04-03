@@ -25,9 +25,12 @@
 
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">글읽기</h1>
+		</div>
 	<div class="container">
 		<div class="row">
-			<h1>글 자세히 보기</h1>
+
 			<div class="form-group">
 				<label for="title">제목</label>
 				<input class="form-control" id="title" readonly value="${vo.title}" name="title">

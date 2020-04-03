@@ -13,7 +13,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>회원정보 자세히 보기</h1>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">회원 정보</h1>
+		</div>
+
 	ID:${dto.id}<br>
 	NAME:${dto.name}<br>
 	AGE:${dto.age}<br>

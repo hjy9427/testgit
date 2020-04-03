@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">QNA 게시판</h1>
+		</div>
 	<div class="container">
 	<!--컨테이너는 좌측과 우측에 빈 공간을 줌 꽉 채우고싶으면 컨테인드어쩌고???  -->
 		<div class="row">
@@ -31,7 +34,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="vo">
+					<c:forEach items="${qlist}" var="vo">
 						<tr>
 							<td>${vo.bno}</td>
 							<%-- <c:if test="${vo.secretno}==1">

@@ -13,7 +13,7 @@ public class PageTO {
 	private int beginPageNum;
 	private int stopPageNum;
 	private List<BoardVO> list;
-	
+	private List<QNABoardVO> qlist;
 	public PageTO() {
 		process();
 	}
@@ -128,6 +128,16 @@ public class PageTO {
 
 	public void setList(List<BoardVO> list) {
 		this.list = list;
+	}
+
+
+	public List<QNABoardVO> getQlist() {
+		return qlist;
+	}
+
+
+	public void setQlist(List<QNABoardVO> qlist) {
+		this.qlist = qlist;
 	}
 
 

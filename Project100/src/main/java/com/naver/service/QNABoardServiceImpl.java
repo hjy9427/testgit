@@ -59,8 +59,8 @@ public class QNABoardServiceImpl implements QNABoardService{
 	@Override
 	public QNABoardVO updateui(int bno) {
 		QNABoardVO vo= bdao.updateui(bno);
-		List<String> list = bdao.getAttach(bno);
-		String[] filename=list.toArray(new String[list.size()]);
+		List<String> qlist = bdao.getAttach(bno);
+		String[] filename=qlist.toArray(new String[qlist.size()]);
 		vo.setFilename(filename);
 		 
 		return vo; 
@@ -85,8 +85,8 @@ public class QNABoardServiceImpl implements QNABoardService{
 	public PageTO listpage(PageTO to) {
 		int amount= bdao.getAmount();
 		to.setAmount(amount);
-		List<QNABoardVO> list=bdao.getListpage(to);
-		to.setList(list);
+		List<QNABoardVO> qlist=bdao.getListpage(to);
+		to.setQlist(qlist);
 		return to;
 	}
 

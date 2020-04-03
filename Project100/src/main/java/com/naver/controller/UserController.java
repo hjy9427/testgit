@@ -23,7 +23,5 @@ public class UserController {
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void login() {
-		
 	}
-	
 }

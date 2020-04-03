@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">게시판</h1>
+		</div>
 	<div class="container">
 	<!--컨테이너는 좌측과 우측에 빈 공간을 줌 꽉 채우고싶으면 컨테인드어쩌고???  -->
 		<form>
@@ -22,7 +25,7 @@
 			</form>
 		
 		<div class="row">
-		
+	
 		<!--디브 기능 하나  -->
 			<table class="table">
 			<!--부트스트랩은 클래스기반이라 클래스이름을 적어줘야 됨  -->
@@ -30,7 +33,6 @@
 				<!--컬럼명적기  -->
 					<tr>
 						<th>bno</th>
-						<th>문의유형</th>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
@@ -42,36 +44,10 @@
 					<c:forEach items="${to.list}" var="vo">
 						<tr>
 							<td>${vo.bno}</td>
-							<td>${vo.qnatype}</td>
-							<c:choose>
-								<c:when test="${vo.secretno==1}">
-									<c:choose>
-									<c:when test="${login.id!=null}">
-										<c:choose>
-											<c:when test="${login.id==vo.writer}"> 
-												<td><a href="/board/read/${vo.bno}?curPage=${to.curPage}">${vo.title}</td>
-											</c:when>
-											<c:otherwise>
-												<td><a class="secretqna" href="redirect:/board/listpage?curPage=${curPage}">${vo.title}</button></td>
-											</c:otherwise>
-									<%--   --%>
-										</c:choose>
-										
-									</c:when>
-									<c:otherwise>
-										<td><a href="/user/login">${vo.title}</td>
-									</c:otherwise>
-									</c:choose>
-								</c:when> 
-								<c:otherwise>
-									<td><a href="/board/read/${vo.bno}?curPage=${to.curPage}">${vo.title}</td>
-								</c:otherwise>
-							</c:choose>
-
+							<td><a href="/board/read/${vo.bno}?curPage=${to.curPage}">${vo.title}</td>
 							<td>${vo.writer}</td>
 							<td>${vo.updatedate}</td>
 							<td>${vo.readcnt}</td>
-							
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -90,27 +66,20 @@
 		<div class="row">
 			<a href="/board/insert">글쓰기</a>
 		</div><!--class=row  -->
+		<div class="row">
+			<a href="/qboard/listpage">QNA게시판</a>
+		</div>
+		<div class="row">
+			<a href="/member/insert">회원가입</a>
+		</div>
+		<div class="row">
+			<a href="/user/login">로그인</a>
+		</div>
+		<div class="row">
+			<a href="/member/list">회원목록</a>
+		</div>
 	</div><!-- class= conatainer  -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".secretqna").click(function(){
-				$.ajax({
-					type: 'post',
-					url: "/board/secret",
-					data: {
-						'str':'비밀글입니다.',
-					},
-					dataType: 'text',
-					success: function(result){
-						alert(result);
-						/* location.assign("/board/listpage?curPage=${curPage}");  */
-					}
-				});
-			});
-			
-		}); 
-		</script>
-		
+	
 	
 </body>
 </html>

@@ -11,17 +11,13 @@
  	</select>
 	<insert id="insert">
 	
-		insert into board (bno, secretno, qnatype, title, writer, content) 
+		insert into board (bno, title, writer, content) 
 		values 
 		(
 			(select nvl2(max(bno), max(bno)+1, 1) from board), 
-			#{secretno}, #{qnatype}, #{title}, #{writer}, #{content}
+			#{title}, #{writer}, #{content}
 		)
 		<selectKey order="AFTER" keyProperty="bno" resultType="Integer">
-		<!--order 실행순서  
-		위에꺼 다음에 실행
-		여기서 맥스비엔오는 위에서 일 더해준 값임
-		얜 씨데이터 있으면 안돌아가서 빼고해야함-->
 			select max(bno) from board
 		</selectKey>
 		
@@ -37,7 +33,7 @@
 		select * from board where bno=#{bno}
 	</select>
 	<update id="update">
-		update board set secretno=#{secretno}, qnatype=#{qnatype}, title=#{title}, writer=#{writer}, content=#{content}, updatedate=sysdate where bno=#{bno}
+		update board set title=#{title}, writer=#{writer}, content=#{content}, updatedate=sysdate where bno=#{bno}
 	</update>
 	<select id="getAmount" resultType="Integer">
 		select count(bno) from board

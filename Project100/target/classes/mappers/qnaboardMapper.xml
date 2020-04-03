@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.naver.qboard">
  	<select id="getAttach" resultType="string">
- 		select filename from attach where bno=#{bno}
+ 		select filename from qattach where bno=#{bno}
  	</select>
  	<select id="list" resultType="com.naver.dto.QNABoardVO">
  		select * from qboard order by reproot desc, repstep asc
@@ -46,15 +46,15 @@
 	</delete>
 	<insert id="addAttach">
 		<![CDATA[
-		insert into attach (id, filename, bno) values ((select NVL2(max(id), max(id)+1, 1) from attach), #{filename}, #{bno})
+		insert into qattach (id, filename, bno) values ((select NVL2(max(id), max(id)+1, 1) from attach), #{filename}, #{bno})
 		]]>
 	</insert>
 	
 	<delete id="deletefile">
-		delete from attach where bno = #{bno} and filename=#{filename}
+		delete from qattach where bno = #{bno} and filename=#{filename}
 	</delete>
 	<delete id="deleteAllFile">
-		delete from attach where bno=#{bno}
+		delete from qattach where bno=#{bno}
 	</delete>
 	<update id="updatereproot">
 		update qboard set reproot=#{bno} where bno=#{bno}
@@ -70,7 +70,7 @@
 		insert into qboard (bno, secretno, qnatype, title, writer, content, reproot, repstep, repindent) 
 		values 
 		(
-			(select nvl2(max(bno), max(bno)+1, 1) from board), 
+			(select nvl2(max(bno), max(bno)+1, 1) from qboard), 
 			#{secretno}, #{qnatype}, #{title}, #{writer}, #{content}, #{reproot}, #{repstep}+1, #{repindent}+1
 		)
 	

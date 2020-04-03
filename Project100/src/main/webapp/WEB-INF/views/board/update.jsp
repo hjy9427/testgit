@@ -33,44 +33,19 @@
 	</style>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">게시글 수정</h1>
+		</div>
 	<div class="container">
 		<div class="row">
-		<h1>게시글 수정</h1>
 			<form method="post" class="form-horizontal">
-			
-			<c:choose>
-				<c:when test="${vo.secretno==1}">
-
-					<div class="form-group">
-						<input checked="checked" type="checkbox" id="secretno" name="secretno" value="1">
-  						<label class="col-xs-2 control-label" for="secretno">비밀글 여부</label><br>
-					</div>
-					
-				</c:when>
-				<c:otherwise>
-					<div class="form-group">
-						<input type="checkbox" id="secretno" name="secretno" value="1">
-  						<label class="col-xs-2 control-label" for="secretno">비밀글 여부</label><br>
-					</div>
-				</c:otherwise>
-			</c:choose>
+	
 				
 				<input type="hidden" name="curPage" value="${curPage}">
-				<!-- <div class="form-group">
-					<label class="col-xs-2 control-label" for="qna">문의유형</label>
-					<select class="qna" name="qna" style="display:inline-block">
-			
-			  			<option value="0">홈페이지 문의</option>
-			  			<option value="1">상품문의</option>
-			  			<option value="2">배송문의</option>
-			  			<option value="3">기타</option>
-
-			  		</select>
-				</div> -->
+		
 				<div class="form-group">
 					<label class="col-xs-2 control-label" for="bno">글번호</label>
-					<!--label 붙게 해주려고 control-label 
-					control이 들어가면 한 줄을 다 차지함 -->
+			
 					<div class="col-xs-10">
 					<input readonly class="form-control" id="bno" name="bno" value="${vo.bno}">
 					</div>

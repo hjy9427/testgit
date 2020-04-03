@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.board">
+ 	<select id="getAttach" resultType="string">
+ 		select filename from attach where bno=#{bno}
+ 	</select>
+ 	<select id="list" resultType="com.naver.dto.BoardVO">
+ 		select * from board order by bno desc
+ 	</select>
+	<insert id="insert">
+	
+		insert into board (bno, secretno, qnatype, title, writer, content) 
+		values 
+		(
+			(select nvl2(max(bno), max(bno)+1, 1) from board), 
+			#{secretno}, #{qnatype}, #{title}, #{writer}, #{content}
+		)
+		<selectKey order="AFTER" keyProperty="bno" resultType="Integer">
+		<!--order 실행순서  
+		위에꺼 다음에 실행
+		여기서 맥스비엔오는 위에서 일 더해준 값임
+		얜 씨데이터 있으면 안돌아가서 빼고해야함-->
+			select max(bno) from board
+		</selectKey>
+		
+		<!--CDATA 하나의 문자열로 인식  -->
+	</insert>
+	<update id="updateReadcnt">
+		update board set readcnt=readcnt+1 where bno=#{bno}
+	</update>
+	<select id="read" resultType="com.naver.dto.BoardVO">
+		select * from board where bno=#{bno}	
+	</select>
+	<select id="updateui" resultType="com.naver.dto.BoardVO">
+		select * from board where bno=#{bno}
+	</select>
+	<update id="update">
+		update board set secretno=#{secretno}, qnatype=#{qnatype}, title=#{title}, writer=#{writer}, content=#{content}, updatedate=sysdate where bno=#{bno}
+	</update>
+	<select id="getAmount" resultType="Integer">
+		select count(bno) from board
+	</select>
+	<select id="getListpage" resultType="com.naver.dto.BoardVO">
+		select * from board order by bno desc
+	</select>
+	<delete id="delete">
+		delete from board where bno=#{bno}
+	</delete>
+	<insert id="addAttach">
+		<![CDATA[
+		insert into attach (id, filename, bno) values ((select NVL2(max(id), max(id)+1, 1) from attach), #{filename}, #{bno})
+		]]>
+	</insert>
+	
+	<delete id="deletefile">
+		delete from attach where bno = #{bno} and filename=#{filename}
+	</delete>
+	<delete id="deleteAllFile">
+		delete from attach where bno=#{bno}
+	</delete>
+	
+</mapper>

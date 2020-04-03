@@ -23,8 +23,8 @@ public class QNAtypelistpageServiceImpl implements QNAtypelistpageService{
 		/*
 		 * int amount= qdao.getAmountAll(); pto.setAmount(amount);
 		 */
-		List<QNABoardVO> list=qdao.getListpage(to);
-		to.setList(list);
+		List<QNABoardVO> qlist=qdao.getListpage(to);
+		to.setQlist(qlist);
 		return to;
 	}
 	@Override
@@ -36,14 +36,14 @@ public class QNAtypelistpageServiceImpl implements QNAtypelistpageService{
 		if(qnatype!=null) {
 			int amount= qdao.getAmount(qnatype);
 			pto.setAmount(amount);
-			List<QNABoardVO> list=qdao.ngetListpage(pto, qnatype);
-			pto.setList(list);
+			List<QNABoardVO> qlist=qdao.ngetListpage(pto, qnatype);
+			pto.setQlist(qlist);
 			return pto;
 		}else {
 			int amount= qdao.getAmountAll();
 			pto.setAmount(amount);
-			List<QNABoardVO> list=qdao.ngetListpageAll(pto);
-			pto.setList(list);
+			List<QNABoardVO> qlist=qdao.ngetListpageAll(pto);
+			pto.setQlist(qlist);
 			return pto;
 		}
 		

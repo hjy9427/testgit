@@ -33,9 +33,12 @@
 	</style>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">게시글 수정</h1>
+		</div>
 	<div class="container">
 		<div class="row">
-		<h1>게시글 수정</h1>
+
 			<form method="post" class="form-horizontal">
 					<div class="form-group">
 						<input ${vo.secretno==1?'checked':''} type="checkbox" id="secretno" name="secretno" value="1">

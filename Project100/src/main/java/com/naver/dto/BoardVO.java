@@ -11,8 +11,6 @@ public class BoardVO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int bno;
-	private int secretno;
-	private String qnatype;
 	private String title;
 	private String content;
 	private String writer;
@@ -33,12 +31,18 @@ public class BoardVO implements Serializable{
 
 
 
-	public BoardVO(int bno, int secretno, String qnatype, String title, String content, String writer, String regdate,
-			String updatedate, int readcnt, String[] filename) {
+
+
+
+
+
+
+
+
+	public BoardVO(int bno, String title, String content, String writer, String regdate, String updatedate, int readcnt,
+			String[] filename) {
 		super();
 		this.bno = bno;
-		this.secretno = secretno;
-		this.qnatype = qnatype;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
@@ -47,6 +51,14 @@ public class BoardVO implements Serializable{
 		this.readcnt = readcnt;
 		this.filename = filename;
 	}
+
+
+
+
+
+
+
+
 
 
 
@@ -70,34 +82,6 @@ public class BoardVO implements Serializable{
 	
 	
 
-
-	public BoardVO(int bno, int secretno, String title, String content, String writer, String regdate,
-			String updatedate, int readcnt, String[] filename) {
-		super();
-		this.bno = bno;
-		this.secretno = secretno;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
-		this.readcnt = readcnt;
-		this.filename = filename;
-	}
-
-
-	public BoardVO(int bno, String title, String content, String writer, String regdate, String updatedate, int readcnt,
-			String[] filename) {
-		super();
-		this.bno = bno;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
-		this.readcnt = readcnt;
-		this.filename = filename;
-	}
 
 
 	public int getBno() {
@@ -172,37 +156,6 @@ public class BoardVO implements Serializable{
 
 	
 
-	public int getSecretno() {
-		return secretno;
-	}
-
-
-	public void setSecretno(int secretno) {
-		this.secretno = secretno;
-	}
-
-	
-	
-
-
-
-
-	public String getQnatype() {
-		return qnatype;
-	}
-
-
-
-
-
-
-
-
-
-	public void setQnatype(String qnatype) {
-		this.qnatype = qnatype;
-	}
-
 
 
 
@@ -237,15 +190,30 @@ public class BoardVO implements Serializable{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", secretno=" + secretno + ", qnatype=" + qnatype + ", title=" + title
-				+ ", content=" + content + ", writer=" + writer + ", regdate=" + regdate + ", updatedate=" + updatedate
-				+ ", readcnt=" + readcnt + ", filename=" + Arrays.toString(filename) + "]";
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", updatedate=" + updatedate + ", readcnt=" + readcnt + ", filename="
+				+ Arrays.toString(filename) + "]";
 	}
 
 
-	
+
+
+
 
 
 	

@@ -13,7 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>회원정보 수정</h1>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">회원정보 수정</h1>
+		</div>
 	<form action="/member/update" method="post">
 		ID:<input readonly value="${dto.id}" name="id" required="required"><br>
 		NAME:<input value="${dto.name}" name="name" required="required"><br>

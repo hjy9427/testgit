@@ -13,6 +13,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">QNA 게시판(관리자용)</h1>
+		</div>
 	<div class="container">
 	<!--컨테이너는 좌측과 우측에 빈 공간을 줌 꽉 채우고싶으면 컨테인드어쩌고???  -->
 		<form>
@@ -22,6 +25,7 @@
 			</form>
 
 		<div class="row">
+	
 		<form method="get">
 			<div class="form-group">
 				<label for="qnatype">문의유형</label>
@@ -48,7 +52,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${pto.list}" var="vo">
+					<c:forEach items="${pto.qlist}" var="vo">
 						<tr>
 							<td>${vo.bno}</td>
 						<c:choose>
@@ -65,7 +69,7 @@
 								<td>기타</td>
 							</c:otherwise>
 						</c:choose>
-							<td><a href="/board/read/${vo.bno}?curPage=${to.curPage}">
+							<td><a href="/qboard/read/${vo.bno}?curPage=${pto.curPage}">
 									<c:choose>
 										<c:when test="${not empty vo.repindent}">
 										
@@ -107,7 +111,7 @@
 					type: 'get',
 					url: "/qnatypelistpage/listpage",
 					data: {
-						'qnatype':value,
+						qnatype:value,
 					},
 					dataType: 'text',
 					success: function(result){

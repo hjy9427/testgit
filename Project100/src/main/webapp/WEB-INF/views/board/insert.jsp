@@ -31,27 +31,14 @@
 
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-		<div class="jumbotron">
-		<h1>글쓰기</h1>
-		</div>
 	
+		<div class="row">
+		<div class="jumbotron" style="background-color:AliceBlue;">
+		<h1 class="container">글쓰기</h1>
+		</div>
+	<div class="container">
 			<form method="post">
-				<div class="form-group">
-					<input type="checkbox" id="secretno" name="secretno" value="1">
-  					<label for="secretno">비밀글 여부</label><br>
-				</div>
-				<div class="form-group">
-					<label for="qnatype">문의유형</label>
-					<select class="qnatype" id="qnatype" name="qnatype" style="display:inline-block">
-			  			<option value="a">홈페이지 문의</option>
-			  			<option value="b">상품문의</option>
-			  			<option value="c">배송문의</option>
-			  			<option value="d">기타</option>
-
-			  		</select>
-				</div>		  
+				  
 			 
 				<div class="form-group">
 					<label for="title">제목</label>
