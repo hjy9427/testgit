@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.qboard">
+ 	<select id="getAttach" resultType="string">
+ 		select filename from qattach where bno=#{bno}
+ 	</select>
+ 	<select id="list" resultType="com.naver.dto.QNABoardVO">
+ 		select * from qboard order by reproot desc, repstep asc
+ 	</select>
+	<insert id="insert">
+	
+		insert into qboard (bno, secretno, qnatype, title, writer, content) 
+		values 
+		(
+			(select nvl2(max(bno), max(bno)+1, 1) from qboard), 
+			#{secretno}, #{qnatype}, #{title}, #{writer}, #{content}
+		)
+		<selectKey order="AFTER" keyProperty="bno" resultType="Integer">
+	
+			select max(bno) from qboard
+		</selectKey>
+
+	</insert>
+	<update id="updateReadcnt">
+		update qboard set readcnt=readcnt+1 where bno=#{bno}
+	</update>
+	<select id="read" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard where bno=#{bno}	
+	</select>
+	<select id="updateui" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard where bno=#{bno}
+	</select>
+	<update id="update">
+		update qboard set secretno=#{secretno}, qnatype=#{qnatype}, title=#{title}, writer=#{writer}, content=#{content}, updatedate=sysdate where bno=#{bno}
+	</update>
+	<select id="getAmount" resultType="Integer">
+		select count(bno) from qboard
+	</select>
+	<select id="getListpage" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard order by reproot desc, repstep asc
+	</select>
+	<delete id="delete">
+		delete from qboard where bno=#{bno}
+	</delete>
+	<insert id="addAttach">
+		<![CDATA[
+		insert into qattach (id, filename, bno) values ((select NVL2(max(id), max(id)+1, 1) from attach), #{filename}, #{bno})
+		]]>
+	</insert>
+	
+	<delete id="deletefile">
+		delete from qattach where bno = #{bno} and filename=#{filename}
+	</delete>
+	<delete id="deleteAllFile">
+		delete from qattach where bno=#{bno}
+	</delete>
+	<update id="updatereproot">
+		update qboard set reproot=#{bno} where bno=#{bno}
+	</update>
+
+	<update id="updaterep">
+
+		update qboard set repstep=repstep+1 where reproot=#{reproot} and repstep>#{repstep}
+	</update> 
+	
+	<insert id="insertrep">
+	
+		insert into qboard (bno, secretno, qnatype, title, writer, content, reproot, repstep, repindent) 
+		values 
+		(
+			(select nvl2(max(bno), max(bno)+1, 1) from qboard), 
+			#{secretno}, #{qnatype}, #{title}, #{writer}, #{content}, #{reproot}, #{repstep}+1, #{repindent}+1
+		)
+	
+	</insert>
+
+</mapper>

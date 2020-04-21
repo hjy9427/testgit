@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.qnatypelistpage">
+
+ 	<select id="list" resultType="com.naver.dto.QNABoardVO">
+ 		select * from qboard order by reproot desc, repstep asc
+ 	</select>
+ 	
+	<select id="nlist" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard where qnatype=#{qnatype} order by reproot desc, repstep asc
+	</select>
+	
+	<select id="ngetlistpage" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard where qnatype=#{qnatype} order by reproot desc, repstep asc
+	</select>
+	
+		<select id="getListpage" resultType="com.naver.dto.QNABoardVO">
+		select * from qboard order by reproot desc, repstep asc
+	</select>
+	
+	<select id="ngetlistpageall" resultType="com.naver.dto.QNABoardVO">
+ 		select * from qboard order by reproot desc, repstep asc
+ 	</select>
+ 	
+ 	<select id="getAmount" resultType="Integer">
+		select count(bno) from qboard where qnatype=#{qnatype}
+	</select>
+	
+	<select id="getAmountAll" resultType="Integer">
+		select count(bno) from qboard
+	</select>
+	
+</mapper>

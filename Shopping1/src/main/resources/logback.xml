@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Console Log Setting -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <encoder>
+                <pattern>[%d{yyyy/MM/dd HH:mm:ss}] %highlight(%-5level)| %cyan(%-25.25logger{0}) | %msg%n</pattern>
+            </encoder>
+        </layout>
+    </appender>
+    
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>C:/logs/debug.log</file>
+	    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	        <pattern>[%-5level] %d{HH:mm:ss.SSS} %logger{36} - %msg%n</pattern>
+	    </encoder>
+	    
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>C:/logs/old/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>50MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	        <maxHistory>3</maxHistory>
+	    </rollingPolicy>
+	</appender>
+    
+    
+    
+    
+    <!-- 콘솔 & 파일에 로그 전달-->
+    <logger name="com.naver" level="debug" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="file" />
+    </logger>
+ 
+    <root level="error">
+        <appender-ref ref="file-error" />
+        <appender-ref ref="file" />
+    </root>
+
+	  <!-- level DEBUG log output -->
+      <logger  level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="file" />
+    </logger>
+
+
+     <root level="info">
+        <appender-ref ref="STDOUT" />
+        
+    </root>
+ 
+</configuration>

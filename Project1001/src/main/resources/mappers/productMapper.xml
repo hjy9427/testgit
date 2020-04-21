@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.product">
+	<insert id="insert">
+		insert into product (pno, title, content, writer, price, foption, soption, toption) 
+		values 
+		(
+		(select nvl2(max(pno), max(pno)+1, 1) from product), 
+			#{title}, #{content}, #{writer}, #{price}, #{foption}, #{soption}, #{toption}
+		)
+		<selectKey order="AFTER" keyProperty="pno" resultType="Integer">
+			select max(pno) from product
+		</selectKey>
+	</insert>
+	<select id="list" resultType="com.naver.dto.ProductDTO">
+		select * from product order by pno desc
+	</select>
+	<select id="getListpage" resultType="com.naver.dto.ProductDTO">
+		select * from product order by pno desc
+	</select>
+	<select id="getAmount" resultType="Integer">
+		select count(pno) from product
+	</select>
+	<insert id="addAttach">
+		<![CDATA[
+		insert into pattach (id, filename, pno) values ((select NVL2(max(id), max(id)+1, 1) from pattach), #{filename}, #{pno})
+		]]>
+	</insert>
+	<delete id="deletefile">
+		delete from pattach where pno = #{pno} and filename=#{filename}
+	</delete>
+<select id="getAttach" resultType="string">
+ 		select filename from pattach where pno=#{pno}
+ 	</select>
+ 	<select id="read" resultType="com.naver.dto.ProductDTO">
+		select * from product where pno=#{pno}	
+	</select>
+		<update id="updateReadcnt">
+		update product set readcnt=readcnt+1 where pno=#{pno}
+	</update>
+</mapper>
